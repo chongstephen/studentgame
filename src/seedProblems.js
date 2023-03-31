@@ -1,4 +1,4 @@
-const questions = [
+export const questions = [
   {
     id: 1,
     question: '1 + 1 = ?',
@@ -59,5 +59,5 @@ const questions = [
     options: ['0', '1', '2', '10'],
     answer: '10'
   },
-
 ];
+

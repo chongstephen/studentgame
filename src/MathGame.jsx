@@ -1,31 +1,31 @@
 import React, {useState} from 'react';
+import { questions } from './seedProblems.js';
+import './MathGame.css';
+import Button from '@mui/material/Button';
+import { createTheme } from '@mui/material/styles';
 
-const questions = [
-  {
-    id: 1,
-    question: '1 + 1 = ?',
-    options: ['0', '1', '2', '3'],
-    answer: '2'
+const theme = createTheme({
+  palette: {
+    primary: {
+      main: '#5515ac',
+    },
+    secondary: {
+      main: '#11cb5f',
+    },
+    neutral: {
+      main: '#64748B',
+      contrastText: '#fff',
+    },
   },
-  {
-    id: 2,
-    question: '25 + 24 = ?',
-    options: ['0', '1', '2', '49'],
-    answer: '49'
-  },
-  {
-    id: 3,
-    question: '1 + 0 = ?',
-    options: ['0', '1', '2', '3'],
-    answer: '1'
-  },
-];
+});
+
 
 const MathGame = () => {
   const [currentQuestion, setCurrentQuestion] = useState(0);
-  const [timeLeft, setTimeLeft] = useState(10);
+  // const [timeLeft, setTimeLeft] = useState(10);
   const [score, setScore] = useState(0);
   const [gameOver, setGameOver] = useState(false);
+
 
   const handleAnswerOptionClick = (answer) => {
     if (answer === questions[currentQuestion].answer) {
@@ -52,7 +52,7 @@ const MathGame = () => {
       {gameOver ? (
         <div className='score-section'>
           You scored {score} out of 100
-          <button onClick={restartQuiz}>Restart Quiz</button>
+          <Button variant="contained" onClick={restartQuiz}>Restart Quiz</Button>
         </div>
       ) : (
         <>
@@ -64,9 +64,14 @@ const MathGame = () => {
           </div>
           <div className='answer-section'>
             {questions[currentQuestion].options.map((option) => (
-              <button onClick={() => handleAnswerOptionClick(option)} key={option}>
+              <Button
+              sx={{ backgroundColor: theme.palette.neutral.main, color: theme.palette.neutral.contrastText }}
+              variant="contained"
+              size="small"
+              onClick={() => handleAnswerOptionClick(option)} key={option}
+              >
                 {option}
-              </button>
+              </Button>
             ))}
           </div>
         </>
