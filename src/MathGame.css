@@ -1,0 +1,22 @@
+.quiz {
+  display: flex;
+  justify-content: center;
+}
+
+.question-count {
+  font-size: 15px;
+  margin-bottom: 20px;
+}
+
+.question-text {
+  font-size: 50px;
+}
+
+.answer-section{
+  padding: 10px;
+}
+
+.answer-section button{
+  display: flex;
+  justify-content: space-evenly;
+}
