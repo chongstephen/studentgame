@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
@@ -9,6 +9,8 @@ import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 
 const Register = () => {
+  const [accounts, setAccounts] = useState([]);
+
   const [formData, setFormData] = useState({
     firstName: '',
     lastName: '',
@@ -26,9 +28,16 @@ const Register = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-
+    axios.post('/register', formData)
+    .then(response => {
+      console.log(response.data);
+    })
+    .catch(error => {
+      console.error(error);
+    });
     console.log(formData);
   };
+
 
   return (
     <>

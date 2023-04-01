@@ -10,10 +10,10 @@ import Leaderboard from './Leaderboard.jsx';
 const App = () => {
   return(
     <>
-    {/* <Navbar />
+    <Navbar />
     <Login />
     <Register />
-    <MathGame /> */}
+    <MathGame />
     <Leaderboard />
     </>
   )

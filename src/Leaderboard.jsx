@@ -8,6 +8,12 @@ const Leaderboard = () => {
   return(
     <>
     <h1>Leaderboard</h1>
+
+    <div className="leaderboard-option">
+    <h3>Weekly</h3>
+    <h3>All Time</h3>
+    </div>
+
     <table className="leaderboard">
         <thead>
           <tr>
