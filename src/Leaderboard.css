@@ -1,0 +1,21 @@
+.leaderboard {
+  border-collapse: collapse;
+  width: 100%;
+  margin: 20px 0;
+}
+
+.leaderboard th,
+.leaderboard td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+}
+
+.leaderboard th {
+  background-color: #5a4a44;
+  color: white;
+}
+
+.leaderboard tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
