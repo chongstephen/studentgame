@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import axios from 'axios';
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
 import Link from '@mui/material/Link';
@@ -25,6 +26,7 @@ const Register = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
+
     console.log(formData);
   };
 

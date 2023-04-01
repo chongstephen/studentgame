@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import { questions } from './seedProblems.js';
+import { questions } from './seedData.js';
 import './MathGame.css';
 import Button from '@mui/material/Button';
 import { createTheme } from '@mui/material/styles';
