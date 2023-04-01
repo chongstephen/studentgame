@@ -1,6 +1,12 @@
 .quiz {
   display: flex;
+  flex-direction: column;
   justify-content: center;
+}
+
+.question-section {
+  justify-content: center;
+  padding-top: 10px;
 }
 
 .question-count {
@@ -17,6 +23,9 @@
 }
 
 .answer-section button{
-  display: flex;
-  justify-content: space-evenly;
+  margin: 50px;
+}
+
+.answer-option {
+  padding: 50px;
 }

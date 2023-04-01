@@ -70,7 +70,7 @@ const MathGame = () => {
               size="small"
               onClick={() => handleAnswerOptionClick(option)} key={option}
               >
-                {option}
+                <span className="answer-option">{option}</span>
               </Button>
             ))}
           </div>
