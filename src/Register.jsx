@@ -30,7 +30,7 @@ const Register = () => {
     event.preventDefault();
     axios.post('/register', formData)
     .then(response => {
-      console.log(response.data);
+      console.log('res.data', response.data);
     })
     .catch(error => {
       console.error(error);
@@ -129,7 +129,7 @@ const Register = () => {
             </Button>
             <Grid container justifyContent="flex-end">
               <Grid item>
-                <Link href="#" variant="body2">
+                <Link href="/login" variant="body2">
                   Already have an account? Log In
                 </Link>
               </Grid>

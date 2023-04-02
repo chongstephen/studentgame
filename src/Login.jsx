@@ -8,9 +8,13 @@ import Grid from "@mui/material/Grid";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
+import MathGame from './MathGame.jsx';
 
 
 const Login = () => {
+
+  const [loggedIn, setLoggedIn] = useState(false);
+
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
@@ -18,9 +22,13 @@ const Login = () => {
       email: data.get("email"),
       password: data.get("password"),
     });
+    setLoggedIn(true);
   };
   return(
     <>
+    {loggedIn ? (
+    <MathGame />
+    ) :(
 <Container component="main" maxWidth="xs">
       <Box
         sx={{
@@ -73,7 +81,7 @@ const Login = () => {
               </Link>
             </Grid>
             <Grid item>
-              <Link href="#" variant="body2">
+              <Link href="/register" variant="body2">
                 {"Don't have an account? Sign Up"}
               </Link>
             </Grid>
@@ -81,7 +89,9 @@ const Login = () => {
         </Box>
       </Box>
     </Container>
+    )}
     </>
+
   )
 }
 

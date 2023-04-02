@@ -26,8 +26,8 @@ const Navbar = () => {
          Math Mania
           </Typography>
     <div className="navbar-links">
-    <a href="#">Game</a>
-      <a href="#">Leaderboard</a>
+    <a href="/studentgame">Game</a>
+      <a href="/leaderboard">Leaderboard</a>
     </div>
 
 

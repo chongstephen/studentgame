@@ -1,27 +1,24 @@
-require('dotenv').config({path: './studentgame/.env'});
-const { Pool } = require('pg');
+const { Client } = require('pg');
+require('dotenv').config({ path: '../.env' });
 
-const pool = new Pool({
-  user: process.env.DB_USER,
+const db = new Client({
   host: process.env.DB_HOST,
+  user: process.env.DB_USER,
   database: process.env.DB_NAME,
   password: process.env.DB_PASS,
   port: process.env.DB_PORT,
 });
 
+const sampleTable = `CREATE TABLE students (
+  user_id serial PRIMARY KEY,
+  firstname VARCHAR NOT NULL,
+  password VARCHAR NOT NULL
+);`
 
-pool.query(`SELECT 1 FROM pg_database WHERE datname='${process.env.DB_NAME}'`)
-  .then((result) => {
-    if (result.rows.length === 0) {
-      return pool.query(`CREATE DATABASE ${process.env.DB_NAME}`);
-    }
-  })
-  .then(() => {
-    console.log("Database created!");
-  })
-  .catch((err) => {
-    console.log('Error creating database:', err);
-  });
+db.query(sampleTable).then((response) => {
+  console.log("Successful!", response);
+}).catch((err) => {
+  console.log("err cannot connect", err);
+})
 
-
-module.exports = pool;
+module.exports = db;
