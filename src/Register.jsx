@@ -14,8 +14,8 @@ const Register = () => {
   const [userLogin, setUserLogin] = useState(false);
 
   const [formData, setFormData] = useState({
-    firstName: '',
-    lastName: '',
+    first_name: '',
+    last_name: '',
     email: '',
     password: '',
     confirmPassword: '',
@@ -30,7 +30,7 @@ const Register = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    axios.post('/api/register', formData)
+    axios.post('http://localhost:3001/api/register', formData)
       .then(response => {
         console.log('res.data', response.data);
       })
@@ -64,10 +64,10 @@ const Register = () => {
               <Grid item xs={12} sm={6}>
                 <TextField
                   autoComplete="fname"
-                  name="firstName"
+                  name="first_name"
                   required
                   fullWidth
-                  id="firstName"
+                  id="first_name"
                   label="First Name"
                   autoFocus
                   value={formData.firstName}
@@ -78,9 +78,9 @@ const Register = () => {
                 <TextField
                   required
                   fullWidth
-                  id="lastName"
+                  id="last_name"
                   label="Last Name"
-                  name="lastName"
+                  name="last_name"
                   autoComplete="lname"
                   value={formData.lastName}
                   onChange={handleChange}

@@ -9,14 +9,14 @@ const db = new Client({
   port: process.env.DB_PORT,
 });
 
-const sampleTable = `CREATE TABLE users (
+const sampleTable = `CREATE TABLE IF NOT EXISTS users (
   user_id serial PRIMARY KEY,
-  firstname VARCHAR NOT NULL,
+  first_name VARCHAR NOT NULL,
   password VARCHAR NOT NULL
 );`
 
 db.query(sampleTable).then((response) => {
-  console.log("Successful!", response);
+  console.log("Successful!");
 }).catch((err) => {
   console.log("err cannot connect", err);
 })
