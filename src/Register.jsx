@@ -7,9 +7,11 @@ import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
+import Login from './Login.jsx';
 
 const Register = () => {
   const [accounts, setAccounts] = useState([]);
+  const [userLogin, setUserLogin] = useState(false);
 
   const [formData, setFormData] = useState({
     firstName: '',
@@ -28,7 +30,7 @@ const Register = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    axios.post('/register', formData)
+    axios.post('http://localhost:3001/register', formData)
     .then(response => {
       console.log('res.data', response.data);
     })
@@ -38,6 +40,10 @@ const Register = () => {
     console.log(formData);
   };
 
+  const handleUserLogin = (event) => {
+    event.preventDefault();
+    setUserLogin(true);
+  };
 
   return (
     <>
@@ -129,8 +135,8 @@ const Register = () => {
             </Button>
             <Grid container justifyContent="flex-end">
               <Grid item>
-                <Link href="/login" variant="body2">
-                  Already have an account? Log In
+                <Link href="" variant="body2" onClick={handleUserLogin}>
+                  {"Already have an account? Log In"}
                 </Link>
               </Grid>
             </Grid>
@@ -142,3 +148,6 @@ const Register = () => {
 };
 
 export default Register;
+
+
+

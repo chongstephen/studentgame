@@ -9,11 +9,13 @@ import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import MathGame from './MathGame.jsx';
+import Register from './Register.jsx';
 
 
 const Login = () => {
 
   const [loggedIn, setLoggedIn] = useState(false);
+  const [showRegister, setShowRegister] = useState(false);
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -24,11 +26,19 @@ const Login = () => {
     });
     setLoggedIn(true);
   };
+
+  const handleShowRegister = (event) => {
+    event.preventDefault();
+    setShowRegister(true);
+  };
+
   return(
     <>
     {loggedIn ? (
     <MathGame />
-    ) :(
+    ) : showRegister ? (
+    <Register />
+    ) : (
 <Container component="main" maxWidth="xs">
       <Box
         sx={{
@@ -81,7 +91,7 @@ const Login = () => {
               </Link>
             </Grid>
             <Grid item>
-              <Link href="/register" variant="body2">
+              <Link href="#" variant="body2" onClick={handleShowRegister}>
                 {"Don't have an account? Sign Up"}
               </Link>
             </Grid>

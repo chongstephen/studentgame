@@ -1,8 +1,9 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import { questions } from './seedData.js';
 import './MathGame.css';
 import Button from '@mui/material/Button';
 import { createTheme } from '@mui/material/styles';
+import BadgeSystem from './BadgeSystem.jsx';
 
 const theme = createTheme({
   palette: {
@@ -19,12 +20,38 @@ const theme = createTheme({
   },
 });
 
+const getRandomQuestions = () => {
+  const shuffledQuestions = [...questions].sort(() => 0.5 - Math.random());
+  return shuffledQuestions.slice(0, 10);
+};
+
 
 const MathGame = () => {
   const [currentQuestion, setCurrentQuestion] = useState(0);
-  // const [timeLeft, setTimeLeft] = useState(10);
   const [score, setScore] = useState(0);
   const [gameOver, setGameOver] = useState(false);
+  const [questions, setQuestions] = useState(getRandomQuestions());
+  const [time, setTime] = useState(5);
+
+  useEffect(() => {
+    if (currentQuestion >= questions.length || gameOver) {
+      return;
+    }
+    const interval = setInterval(() => {
+      setTime(time => time - 1);
+    }, 1000);
+    return () => clearInterval(interval);
+  }, [currentQuestion, questions.length, gameOver]);
+
+  useEffect(() => {
+    if (time === 0) {
+      handleAnswerOptionClick("");
+    }
+  }, [time]);
+
+  useEffect(() => {
+    setTime(5);
+  }, [currentQuestion]);
 
 
   const handleAnswerOptionClick = (answer) => {
@@ -40,19 +67,20 @@ const MathGame = () => {
     }
   };
 
-  const restartQuiz = () => {
-    setCurrentQuestion(0);
-    setScore(0);
-    setGameOver(false);
-  };
+  // const restartQuiz = () => {
+  //   setCurrentQuestion(0);
+  //   setScore(0);
+  //   setGameOver(false);
+  // };
 
   return(
     <>
     <div className='quiz'>
       {gameOver ? (
         <div className='score-section'>
-          You scored {score} out of 100
-          <Button variant="contained" onClick={restartQuiz}>Restart Quiz</Button>
+          You scored {score} out of 100 points for today!
+          {/* <Button variant="contained" onClick={restartQuiz}>Restart Quiz</Button> */}
+          <BadgeSystem score={score} />
         </div>
       ) : (
         <>
@@ -61,6 +89,7 @@ const MathGame = () => {
               <span>Question {currentQuestion + 1}</span>/{questions.length}
             </div>
             <div className='question-text'>{questions[currentQuestion].question}</div>
+            <div className="timer">{time} seconds left</div>
           </div>
           <div className='answer-section'>
             {questions[currentQuestion].options.map((option) => (
