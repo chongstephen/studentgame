@@ -9,7 +9,7 @@ const db = new Client({
   port: process.env.DB_PORT,
 });
 
-const sampleTable = `CREATE TABLE students (
+const sampleTable = `CREATE TABLE users (
   user_id serial PRIMARY KEY,
   firstname VARCHAR NOT NULL,
   password VARCHAR NOT NULL
@@ -20,5 +20,10 @@ db.query(sampleTable).then((response) => {
 }).catch((err) => {
   console.log("err cannot connect", err);
 })
+
+
+
+db.connect();
+
 
 module.exports = db;

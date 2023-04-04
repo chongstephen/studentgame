@@ -30,13 +30,13 @@ const Register = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    axios.post('http://localhost:3001/register', formData)
-    .then(response => {
-      console.log('res.data', response.data);
-    })
-    .catch(error => {
-      console.error(error);
-    });
+    axios.post('/api/register', formData)
+      .then(response => {
+        console.log('res.data', response.data);
+      })
+      .catch(error => {
+        console.error(error);
+      });
     console.log(formData);
   };
 
