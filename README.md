@@ -30,7 +30,21 @@ Students can earn badges to display how smart they are!
 
 npm install
 
+Install the depencencies
+
+Start Server:
+Open http://localhost:3000 to view it in your browser.
+
 
 ## Release Notes
 
 https://jumpy-buckthorn-679.notion.site/Release-Notes-1-0-0-4b4848dda29b476cbafec62822ff4708
+
+
+## Technologies Used
+Front end - Javascript, React, CSS, HTML
+
+Back end - Node.js, Express
+
+Database - PostgreSQL
+
