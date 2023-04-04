@@ -4,6 +4,7 @@ import './MathGame.css';
 import Button from '@mui/material/Button';
 import { createTheme } from '@mui/material/styles';
 import BadgeSystem from './BadgeSystem.jsx';
+import { addScore } from './db.js';
 
 const theme = createTheme({
   palette: {
@@ -80,6 +81,7 @@ const MathGame = () => {
         <div className='score-section'>
           You scored {score} out of 100 points for today!
           {/* <Button variant="contained" onClick={restartQuiz}>Restart Quiz</Button> */}
+          {addScore('user123', score)}
           <BadgeSystem score={score} />
         </div>
       ) : (

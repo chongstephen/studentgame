@@ -25,5 +25,19 @@ db.query(sampleTable).then((response) => {
 
 db.connect();
 
+const addScore = async (user_id, score) => {
+  const query = `INSERT INTO scores (user_id, score) VALUES ($1, $2)`;
+  const values = [user_id, score];
+  try {
+    const result = await db.query(query, values);
+    console.log(`Score ${score} added for user ${user_id}`);
+    return result.rows[0];
+  } catch (error) {
+    console.error(error);
+  }
+}
 
-module.exports = db;
+module.exports = {
+  db,
+  addScore
+}
