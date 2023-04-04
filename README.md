@@ -1,4 +1,4 @@
-# studentgame
+# Math Mania
 
 A simple math game where students in the same class will compete against each other to solve math problems.
 
