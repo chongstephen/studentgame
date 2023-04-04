@@ -1,7 +1,9 @@
 # studentgame
 
 A simple math game where students in the same class will compete against each other to solve math problems.
+
 Every week, students will have a chance to earn a $10 Gift Card for being the top scorer for the week!
+
 Monday - Friday, students will have to solve 10 math problems. Each question answered correctly will net them 10 points.
 Answers are multiple choice.
 
@@ -27,3 +29,8 @@ Students can earn badges to display how smart they are!
 ## Getting Started
 
 npm install
+
+
+## Release Notes
+
+https://jumpy-buckthorn-679.notion.site/Release-Notes-1-0-0-4b4848dda29b476cbafec62822ff4708
